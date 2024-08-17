@@ -8,6 +8,33 @@ import App from "next/app";
 
 
 export default function Home() {
+
+  const handleSubmit = async () => {
+    const CheckOutsession = await fetch('/api/checkout-session', {
+      method: 'POST',
+      headers: {
+        origin: 'http://localhost:3000'
+      },
+    }).then(res => res.json())
+
+    const checkoutSessionJson = await CheckOutsession.json()
+
+    if(checkoutSessionJson.statusCode === 500){
+      console.error(checkoutSessionJson.message)
+      return
+    }
+
+    const stripe = await getStripe()
+    const {error} = await stripe.redirectToCheckout({
+      sessionId: checkoutSessionJson.id
+    })
+
+    if(error){
+      console.warn(error.message)
+    }
+
+  }
+
   return (
     <Container>
       <Head>
@@ -101,7 +128,7 @@ export default function Home() {
               {' '}
               Unlimited flashcards and storage, with priority support.
             </Typography>
-            <Button variant="contained" color="primary" sx={{mt: 2}}>
+            <Button variant="contained" color="primary" sx={{mt: 2}} onClick={handleSubmit}>
               Choose Pro
             </Button>
             </Box>
