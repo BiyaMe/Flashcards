@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
 
 import { doc, getDoc, setDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import { CardActionArea, Grid } from "@mui/material";
+import { CardActionArea, Grid, Card, Container, CardContent, Typography } from "@mui/material";
 
 export default function Flashcards() {
     const {isLoaded, isSignedIn, user} = useUser();

@@ -5,7 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import {collection, doc, getDoc, setDoc} from "firebase/firestore";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, CircularProgress } from "@mui/material";
 
 const ResultPage = () => {
     const router = useRouter();
