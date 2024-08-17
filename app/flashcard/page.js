@@ -5,6 +5,8 @@ import { useUser } from "@clerk/nextjs";
 import {collection, doc, getDoc, setDoc} from "firebase/firestore";
 import { useSearchParams } from "next/navigation";
 import { AppBar, Box, Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Paper, Toolbar, Typography, TextField, Grid, Card, CardActionArea, CardContent } from "@mui/material";
+import { useRouter } from "next/navigation";
+//import db from "@/firebase";
 
 
 let db;

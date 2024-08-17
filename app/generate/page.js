@@ -4,9 +4,14 @@ import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { AppBar, Box, Button, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Paper, Toolbar, Typography, TextField, Grid, Card, CardActionArea, CardContent } from "@mui/material";
 import { useRouter } from "next/navigation";
-import db from "@/firebase";
 import { doc, getDoc, setDoc, writeBatch, collection } from "firebase/firestore";
+//import db from "@/firebase";
 
+let db;
+if (typeof window !== 'undefined') {
+    const { db: fs } = require('@/firebase');
+    db = fs;
+}
 
 
 export default function Generate(){

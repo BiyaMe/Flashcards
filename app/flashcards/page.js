@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
+//import { db } from "@/firebase";
 
 let db;
 if (typeof window !== 'undefined') {
