@@ -12,10 +12,10 @@ export async function GET(req){
 
     try{
         const checkoutSession = await stripe.checkout.sessions.retrieve(session_id)
-        return NextResponse.json(checkoutSession, {status: 200})
+        return NextResponse.json(checkoutSession)
     } catch (error){
         console.error('error retrieving checkout session', error)
-        return NextResponse.json({error: error.message}, {status: 500})
+        return NextResponse.json({error: {message: error.message}}, {status: 500})
     }
 
 }
